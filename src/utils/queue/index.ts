@@ -1,25 +1,16 @@
-import { redisOptions as redisOptionsI } from "../redis/config";
 import { createIcdcodClassificationWorker } from "./icdcodeClassification/worker";
-import { createOcrExtractionWorker } from "./ocrExtraction/worker";
 import { createOcrExtractionStatusWorker } from "./ocrExtractionStatus/worker";
-import { createOcrPageExtractorWorker } from "./ocrPageExtractor/worker";
+import { redis } from "../redis";
 
 export async function startBackgroundJobs() {
-  const redisOptions = {
-    ...redisOptionsI,
-    maxRetriesPerRequest: null,
-  };
 
-  const ocrExtractionWorker = await createOcrExtractionWorker();
   const ocrExtractionStatusWorker = await createOcrExtractionStatusWorker();
   const icdcodClassificationWorker = await createIcdcodClassificationWorker();
-  const ocrPageExtractorWorker = await createOcrPageExtractorWorker();
 
   const shutdown = async () => {
-    await ocrExtractionWorker.close();
     await ocrExtractionStatusWorker.close();
     await icdcodClassificationWorker.close();
-    await ocrPageExtractorWorker.close();
+    await redis.quit();
     process.exit(0);
   };
 

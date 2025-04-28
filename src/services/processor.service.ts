@@ -9,6 +9,7 @@ import {
   Document,
   DocumentModel,
   ExtractionStatus,
+  TempPageDocument,
   TempPageDocumentModel,
 } from "../models/document.model";
 import {
@@ -17,8 +18,9 @@ import {
   fetchPdfFromUrl,
   loadPdfJs,
 } from "../utils";
+import { extractMedicalRecordFromPdf } from "../utils/ai/reportExtractor";
 import { deleteFromS3, uploadToS3 } from "../utils/aws/s3";
-import { addOcrPageExtractorBackgroundJob } from "../utils/queue/producer";
+import { addOcrExtractionStatusPollingJob } from "../utils/queue/producer";
 import { textractClient } from "../utils/textract";
 import { CaseService } from "./case.service";
 import { DocumentService } from "./document.service";
@@ -153,10 +155,13 @@ export class ProcessorService {
             );
             savedDoc.jobId = jobId;
             savedDoc.pdfS3Key = pdfS3Key;
-            if (jobId) await addOcrPageExtractorBackgroundJob(jobId);
+            savedDoc.isCompleted = false;
+            if (jobId) await addOcrExtractionStatusPollingJob(jobId);
             hasOcr = true;
             appLogger(
-              `Page ${i + 1} ocr has been added to queue for ${documentUrl}`
+              `Page ${
+                i + 1
+              } ${jobId} ocr has been added to queue for ${documentUrl}`
             );
           } else {
             savedDoc.isCompleted = true;
@@ -167,10 +172,10 @@ export class ProcessorService {
           await this.updatePercentageCompletion(caseId, i + 1, numberOfPages);
           await savedDoc.save();
         }
-        if (!hasOcr) {
-          const document = await DocumentModel.findById(documentId).lean();
-          if (document) await this.processReport(document);
-        }
+        // if (!hasOcr) {
+        const document = await DocumentModel.findById(documentId).lean();
+        if (document) await this.processCaseDocumentReports(document);
+        // }
       }
     } catch (error: any) {
       appErrorLogger(`Error splitting PDF: ${error?.message}`);
@@ -208,9 +213,10 @@ export class ProcessorService {
   }
 
   async processOcrPage(jobId: string) {
-    const pageText = await this.documentService.getCombinedDocumentContent(
-      jobId!
-    );
+    const { success, pageText } =
+      await this.documentService.getCombinedDocumentContent(jobId!);
+    appLogger(`Page text ${jobId}: ${pageText?.slice(0, 10)}`);
+    if (!success) return;
 
     const updatedDoc = await TempPageDocumentModel.findOneAndUpdate(
       { jobId },
@@ -232,7 +238,7 @@ export class ProcessorService {
         );
       }
 
-      await this.processReport(updatedDoc.document);
+      await this.processCaseDocumentReports(updatedDoc.document);
     }
   }
 
@@ -240,17 +246,18 @@ export class ProcessorService {
     const completedDocs = await TempPageDocumentModel.find({
       isCompleted: true,
       document: document._id,
-      report: [],
+      // report: [],
+      reportGenerated: false,
     }).lean();
 
     for (const doc of completedDocs) {
       const pageReport =
-        await this.documentService.generateReportForTempPageDocument(doc);
+        await this.documentService.generateReportForTempPageDocumentV2(doc);
       const document = await DocumentModel.findById(doc.document).lean();
-      if (document && pageReport.length && document.case) {
+      if (document && pageReport && document.case) {
         await this.caseService.updateCaseReports(document.case.toString(), [
           {
-            ...pageReport[0],
+            ...pageReport,
             pageNumber: doc.pageNumber,
           },
         ]);
@@ -267,6 +274,7 @@ export class ProcessorService {
         doc._id,
         {
           report: pageReport,
+          reportGenerated: true,
         },
         { new: true }
       );
@@ -306,9 +314,117 @@ export class ProcessorService {
           case: document.case,
         }).lean();
         const alldocIds = alldocs.map((item) => item._id);
-        await TempPageDocumentModel.deleteMany({
-          document: { $in: alldocIds },
-        });
+
+        // await TempPageDocumentModel.deleteMany({
+        //   document: { $in: alldocIds },
+        // });
+
+        appLogger(`All temp page document deleted for case ${document.case}`);
+      } else {
+        appLogger(
+          `${pendingDocs.length} Pending Documment for ${document.url}`
+        );
+      }
+    } else {
+      appLogger(`${pendingPageDocs.length} Pending Pages for ${document.url}`);
+    }
+  }
+
+  private async isValidReport(report: any): Promise<boolean> {
+    if (!report.diseaseName || !report.diseaseName.length) return false;
+    const hasValidDisease =
+      report.nameOfDisease !== "Not provided" && report.nameOfDisease !== "N/A";
+    // const hasValidAmount =
+    //   report.amountSpent !== "Not provided" &&
+    //   !isNaN(Number(report.amountSpent)) &&
+    //   Number(report.amountSpent) > 0;
+
+    return hasValidDisease; // Keep if either disease or amount is valid
+  }
+
+  async processCaseDocumentReports(document: Document) {
+    const pendingPageDocs = await TempPageDocumentModel.find({
+      document: document._id,
+      isCompleted: false,
+    }).lean();
+
+    if (!pendingPageDocs.length) {
+      appLogger(`No Pending Pages found`);
+      const documentWithTexts = await TempPageDocumentModel.find(
+        {
+          document: document._id,
+          $and: [
+            { pageText: { $exists: true } },
+            { pageText: { $ne: "" } },
+            { pageText: { $ne: null } },
+          ],
+        },
+        { pageText: 1, pageNumber: 1, _id: 1 }
+      ).lean();
+      if (!documentWithTexts) return;
+      if (!documentWithTexts.length) return;
+
+      const unfilteredReports = await extractMedicalRecordFromPdf(
+        documentWithTexts as any
+      );
+      //return;
+      const filteredReports = unfilteredReports.filter(this.isValidReport);
+      // console.log("filteredReports", JSON.stringify(filteredReports, null, 2));
+      const processedReports = await Promise.all(
+        filteredReports.map((report) =>
+          this.documentService.processRawReport(report)
+        )
+      );
+      const flatProcessedReports = processedReports.flat();
+      console.log(
+        "processedReports",
+        JSON.stringify(flatProcessedReports, null, 2)
+      );
+      await Promise.all(
+        flatProcessedReports.map((report) => {
+          TempPageDocumentModel.findByIdAndUpdate(
+            report.pageId,
+            { report: report },
+            { new: true }
+          );
+        })
+      );
+      await this.caseService.updateCaseReports(
+        document.case.toString(),
+        flatProcessedReports
+      );
+      await DocumentModel.findByIdAndUpdate(
+        document._id,
+        {
+          isCompleted: true,
+          status: ExtractionStatus.SUCCESS,
+        },
+        { new: true }
+      );
+      const pendingDocs = await DocumentModel.find({
+        case: document.case,
+        isCompleted: false,
+        status: ExtractionStatus.PENDING,
+      });
+      if (!pendingDocs.length) {
+        appLogger(`No Pending case document found for ${document.url}`);
+        await CaseModel.findByIdAndUpdate(
+          document.case,
+          {
+            cronStatus: CronStatus.Processed,
+            percentageCompletion: 100,
+          },
+          { new: true }
+        );
+        const alldocs = await DocumentModel.find({
+          case: document.case,
+        }).lean();
+        const alldocIds = alldocs.map((item) => item._id);
+
+        // await TempPageDocumentModel.deleteMany({
+        //   document: { $in: alldocIds },
+        // });
+
         appLogger(`All temp page document deleted for case ${document.case}`);
       } else {
         appLogger(
@@ -321,6 +437,12 @@ export class ProcessorService {
   }
 
   async processCase() {
+    console.log("Processing case");
+    // const document = await DocumentModel.findById(
+    //   "6806bdf44f6f1c2b62ddf9ac"
+    // ).lean();
+    // if (document) await this.processCaseDocumentReports(document);
+    // return;
     const caseItem = await CaseModel.findOne({
       $or: [
         { cronStatus: CronStatus.Pending },

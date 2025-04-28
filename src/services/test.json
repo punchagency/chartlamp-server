@@ -1,0 +1,451 @@
+[
+    {
+        "icdCodes": [
+            "F43.0",
+            "G44.309",
+            "G47.00",
+            "G89.11",
+            "M25.512",
+            "M40.202",
+            "M54.2",
+            "M54.6",
+            "M54.9",
+            "M99.01",
+            "M99.02",
+            "R42",
+            "S09.90XA",
+            "S46.012A",
+            "V43.52XA",
+            "V89.2XXA",
+            "Y92.410"
+        ],
+        "nameOfDisease": "F43.0,G44.309,G47.00,G89.11,M25.512,M40.202,M54.2,M54.6,M54.9,M99.01,M99.02,R42,S09.90XA,S46.012A,V43.52XA,V89.2XXA,Y92.410",
+        "amountSpent": 0,
+        "providerName": "Medical Resource Services",
+        "doctorName": "",
+        "medicalNote": "Medical Records Summary for patient Jesus Prado Maldonado. Date of Injury: 5/16/2023. ICD-10 codes diagnosed and CPT codes used are listed. Total number of treatment dates: 5. Initial Treatment Date: 5/16/2023. Last Treatment Date: 6/28/2023. Document
+ed injuries and symptoms are related to the instant accident. Final prognosis is ongoing complaints with ongoing treatment. Future treatment includes both passive and active treatments. Whole Body Impairment Rating: 3%. Duties under duress and loss of enjoyment noted.","dateOfClaim": "2024-12-18T23:00:00.000Z",
+        "nameOfDiseaseByIcdCode": [
+            {
+                "icdCode": "F43.0",
+                "nameOfDisease": "Acute stress reaction",
+                "summary": "ICD code F43.0 is relevant as it indicates the patient experienced an acute stress reaction, potentially due to the accident mentioned in the medical records.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "G44.309",
+                "nameOfDisease": "Chronic tension-type headache, unspecified, not intractable",
+                "summary": "ICD code G44.309 is relevant as it suggests the patient suffers from chronic tension-type headaches, which are commonly associated with stress or trauma.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "G47.00",
+                "nameOfDisease": "Insomnia, unspecified",
+                "summary": "ICD code G47.00 is relevant as it indicates the patient has been experiencing insomnia, which may be a consequence of stress or pain from the accident.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "G89.11",
+                "nameOfDisease": "Acute pain due to trauma",
+                "summary": "ICD code G89.11 is relevant as it indicates the patient is experiencing acute pain resulting from the traumatic incident described in the medical records.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "M25.512",
+                "nameOfDisease": "Pain in left shoulder",
+                "summary": "ICD code M25.512 is relevant as it specifies the patient is experiencing pain in the left shoulder, possibly due to the accident.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "M40.202",
+                "nameOfDisease": "Unspecified kyphosis, site unspecified",
+                "summary": "ICD code M40.202 is relevant as it indicates the presence of kyphosis, which could have been exacerbated by the accident.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "M54.2",
+                "nameOfDisease": "Cervicalgia",
+                "summary": "ICD code M54.2 is relevant as it indicates neck pain, which may be related to the cervical spine issues noted in the prognosis.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "M54.6",
+                "nameOfDisease": "Pain in thoracic spine",
+                "summary": "ICD code M54.6 is relevant as it indicates the patient is experiencing pain in the thoracic spine, potentially due to the accident.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "M54.9",
+                "nameOfDisease": "Dorsalgia, unspecified",
+                "summary": "ICD code M54.9 is relevant as it indicates unspecified back pain, which could be related to the accident or exacerbated conditions.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "M99.01",
+                "nameOfDisease": "Segmental and somatic dysfunction of cervical region",
+                "summary": "ICD code M99.01 is relevant as it indicates dysfunction in the cervical region, aligning with the cervical spine issues noted in the prognosis.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "M99.02",
+                "nameOfDisease": "Segmental and somatic dysfunction of thoracic region",
+                "summary": "ICD code M99.02 is relevant as it indicates dysfunction in the thoracic region, potentially contributing to the patient's pain and discomfort.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "R42",
+                "nameOfDisease": "Dizziness and giddiness",
+                "summary": "ICD code R42 is relevant as it indicates the patient is experiencing dizziness, which is one of the symptoms identified during treatment.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "S09.90XA",
+                "nameOfDisease": "Unspecified injury of head, initial encounter",
+                "summary": "ICD code S09.90XA is relevant as it indicates an unspecified head injury, which is likely related to the accident described.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "S46.012A",
+                "nameOfDisease": "Strain of muscle(s) and tendon(s) of the rotator cuff of left shoulder, initial encounter",
+                "summary": "ICD code S46.012A is relevant as it indicates a strain in the left shoulder's rotator cuff, which is consistent with the pain in the left shoulder diagnosis.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "V43.52XA",
+                "nameOfDisease": "Car driver injured in collision with fixed or stationary object in traffic accident, initial encounter",
+                "summary": "ICD code V43.52XA is relevant as it indicates the patient was involved in a traffic accident, which is the context for the injuries and symptoms documented.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "V89.2XXA",
+                "nameOfDisease": "Person injured in unspecified motor-vehicle accident, traffic, initial encounter",
+                "summary": "ICD code V89.2XXA is relevant as it indicates the patient was injured in a motor vehicle accident, which is the primary event leading to the medical evaluation.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            },
+            {
+                "icdCode": "Y92.410",
+                "nameOfDisease": "Street and highway as the place of occurrence of the external cause",
+                "summary": "ICD code Y92.410 is relevant as it specifies the location of the accident as a street or highway, providing context for the injuries sustained.",
+                "excerpt": "ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA, Y92.410 Is the Supplemental CMS1500 form being used so that more than 12 ICD-9/ICD-10 codes wou
+ld be identified?"
+            }
+        ],
+        "pageText": "MEDICAL RECORDS SUMMARY  Patient Name: Jesus Prado Maldonado   Date of Injury: 5/16/2023  List all ICD-10 codes diagnosed: F43.0, G44.309, G47.00, G89.11, M25.512, M40.202, M54.2, M54.6, M54.9, M99.01, M99.02, R42, S09.90XA, S46.012A, V43.52XA, V89.2XXA,
+ Y92.410  Is the   Supplemental CMS1500   form being used so that more than 12 ICD-9/ICD-10 codes would be identified?   Yes   No  List all CPT codes used: 70450,
+        71046,
+        72052,
+        72070,
+        72125,
+        73030,
+        97012,
+        97014,
+        98941,
+        99204,
+        99358  Total number of treatment dates: 5   I
+nitial Treatment Date: 5/16/2023   Last Treatment Date: 6/28/2023  Which of the following items were identified throughout the treatment:  Range of Motion  Headaches  Dizziness  Spasms  Visual Disturbance  Radiating Pain  TMJ - Bruxation – Grinding - Clenching  Anxiety/D
+epression  Sleep Disturbance  Stiffness  Pain  Atrophy   Body parts ______________________________________________________________  Bed Rest  Check all that apply:   Home Exercise   Massage   Physical Therapy   Gym   Short   Prolonged   Intensive   Regular  Check all tha
+t apply:   Medication   Check all that apply :   Short   Prolonged   Intensive   Regular  Check all that apply:   Tests   X-ray   MRI   DMX   C-scan   Check all that apply:   Positive   Negative  All documented injuries and symptoms are related to the instant accident.
+ Yes  Documented prior injuries or conditions only aggravated or exacerbated injuries caused by the instant accident:   Yes  Is your final prognosis, “Ongoing Complaints with Ongoing Treatment”:   Yes   No  Ongoing treatment would include   both Passive and Active   Trea
+tments  What future treatment is determined necessary as either   Probable (51 to 75% medically certain of it occurring)  or   Definite (76 to 100% medically certain.)  State the estimated cost of future treatment over the next two years.   Total cost of expected future
+treatment $  Indicate   which body part   has reached   static   MMI: Cervical Spine   % Whole Body Impairment Rating: 3%  Duties Under Duress:  Work   Study   Domestic Duties   Household Duties   Hobbies  Loss of Enjoyment:  Work   Study   Domestic Duties   Household Du
+ties   Hobbies   Sport  Sport Categories: (indicate type patient cannot perform:  Regionally Playing   Competitive   Social   Any Sport  Completed by Medical Resource Services on 12/19/2024","pageNumber": 3
+    },
+    {
+        "icdCodes": [
+            "M54.2",
+            "M54.6",
+            "S09.90XA"
+        ],
+        "nameOfDisease": "Cervicalgia,Pain in thoracic spine,Unspecified injury of head, initial encounter",
+        "amountSpent": 13805,
+        "providerName": "Memorial Medical Center Modesto",
+        "doctorName": "Priscilla Shee Ding, MD",
+        "medicalNote": "Admission and discharge details for Jesus Prado. Admitted on 05/16/2023 for emergency services. Diagnosed with cervicalgia, pain in thoracic spine, and unspecified injury of head. Services included chest X-ray, CT brain without contrast, CT spine cerv
+ical without contrast, and emergency department visit. Total charges: $13,
+        805.00. Payments and adjustments covered by Medi-Cal.","dateOfClaim": "2023-05-15T23:00:00.000Z",
+        "nameOfDiseaseByIcdCode": [
+            {
+                "icdCode": "M54.2",
+                "nameOfDisease": "Cervicalgia",
+                "summary": "The ICD code M54.2 is relevant as it identifies Cervicalgia as one of the admission diagnoses for the patient, indicating that the patient was experiencing neck pain during their visit to the emergency department.",
+                "excerpt": "Admission Diagnoses / Reasons for Visit (ICD-10-CM) Code Description Comments M54.2 Cervicalgia M54.6 Pain in thoracic spine S09.90XA Unspecified injury of head, initial encounter Final Diagnoses (ICD-10-CM)"
+            },
+            {
+                "icdCode": "M54.6",
+                "nameOfDisease": "Pain in thoracic spine",
+                "summary": "The ICD code M54.6 is relevant as it denotes Pain in the thoracic spine as a diagnosis, suggesting the patient was suffering from mid-back pain during their emergency department visit.",
+                "excerpt": "Admission Diagnoses / Reasons for Visit (ICD-10-CM) Code Description Comments M54.2 Cervicalgia M54.6 Pain in thoracic spine S09.90XA Unspecified injury of head, initial encounter Final Diagnoses (ICD-10-CM)"
+            },
+            {
+                "icdCode": "S09.90XA",
+                "nameOfDisease": "Unspecified injury of head, initial encounter",
+                "summary": "The ICD code S09.90XA is significant as it indicates an unspecified head injury was part of the patient's initial encounter diagnosis, highlighting a potential concern that required medical evaluation.",
+                "excerpt": "Admission Diagnoses / Reasons for Visit (ICD-10-CM) Code Description Comments M54.2 Cervicalgia M54.6 Pain in thoracic spine S09.90XA Unspecified injury of head, initial encounter Final Diagnoses (ICD-10-CM)"
+            }
+        ],
+        "pageText": "Legal Copy  MEMORIAL MEDICAL CTR  MODESTO  1700 Coffee Road  Modesto CA 95355-2803  Prado, Jesus  MRN: 64572229, DOB: 2/24/1975, Sex: M  Adm: 5/16/2023, D/C: 5/16/2023  Coding Summary  Admission Information  Arrival Date/Time:   05/16/2023 10:38 AM   Adm
+it Date/Time: 05/16/2023 10: 57 AM   IP Adm. Date/Time:  Admission Type:   Emergency   Point of Origin:   Physician/self  Referral  Admit Category:  Means of Arrival:   Car   Primary Service:   Emergency   Secondary Service:  Transfer Source:   Service Area:   CENTRAL V
+ALLEY  REGION ACUTE  CARE  Unit:   Memorial Medical  Center Emergency  Department  Admit Provider:   Attending Provider:   Ding, Priscilla Shee,  MD  Referring Provider:  Discharge Information  Discharge Date/Time   Discharge Disposition   Discharge Destination   Dischar
+ge Provider   Unit  05/16/2023 2: 34 PM   Home Or Self Care   None   None   Memorial Medical Center  Emergency Department  Coding Status  Coding Status   Coder   Status Change Date/Time   Comment  Completed   Kathryn Montejano   05/22/2023 11: 00: 58 AM  Admission Diagnoses
+ / Reasons for Visit (ICD-10-CM)  Code   Description   Comments  M54.2   Cervicalgia  M54.6   Pain in thoracic spine  S09.90XA   Unspecified injury of head, initial encounter  Final Diagnoses (ICD-10-CM)  Code   Description   POA   CC   HAC   Affects DRG  M54.2   [Princi
+pal
+        ]   Cervicalgia  M54.6   Pain in thoracic spine  External Causes of Injury (ICD-10-CM)  Code   Description   POA   CC   HAC   Affects DRG  V43.52XA   Car driver injured in collision with other type car in traffic accident,  initial encounter  Exempt  from  POA  report
+ing  Y92.410   Unspecified street and highway as the place of occurrence of the  external cause  Exempt  from  POA  reporting  Prado, Jesus #64572229  Admission Info:   Emergency (Adm: 05/16/23)  Hospital Account: 205174483  Description: 49 year old M  Primary Servic
+e:   Emergency  Unit Info:   CVMMERDA  Printed by [S338673
+        ] at 4/12/2024 1: 16 PM   Page   6","pageNumber": 13
+    },
+    {
+        "icdCodes": [
+            "V43.52XA",
+            "M54.2",
+            "M54.6"
+        ],
+        "nameOfDisease": "Neck pain,Upper back pain,MVA (motor vehicle accident)",
+        "amountSpent": 0,
+        "providerName": "Memorial Medical Center Modesto",
+        "doctorName": "Priscilla S Ding, MD",
+        "medicalNote": "Chief complaint: Auto accident. Visit diagnoses include motor vehicle accident (primary), neck pain, and upper back pain. Dr. Priscilla S Ding was the supervising physician for the encounter. Ramin Lail, NP, electronically signed the provider notes.",
+        "dateOfClaim": "2023-05-15T23:00:00.000Z",
+        "nameOfDiseaseByIcdCode": [
+            {
+                "icdCode": "V43.52XA",
+                "nameOfDisease": "MVA (motor vehicle accident)",
+                "summary": "The ICD code V43.52XA is relevant as it corresponds to the primary reason for the patient's visit, which was an auto accident, as indicated in the emergency department documentation.",
+                "excerpt": "Department (continued) Reason for Visit Chief complaint: Auto accident Visit diagnoses: · · · · · MVA (motor vehicle accident) (primary) [V89.2XXA] · Neck pain"
+            },
+            {
+                "icdCode": "M54.2",
+                "nameOfDisease": "Neck pain",
+                "summary": "The ICD code M54.2 is relevant because it identifies one of the specific diagnoses made during the patient's visit to the emergency department, which was neck pain.",
+                "excerpt": "accident Visit diagnoses: · · · · · MVA (motor vehicle accident) (primary) [V89.2XXA] · Neck pain [M54.2] · Upper back pain [M54.9] Visit Information ED Provider Note"
+            },
+            {
+                "icdCode": "M54.6",
+                "nameOfDisease": "Upper back pain",
+                "summary": "The ICD code M54.6 is relevant as it reflects another diagnosis made during the patient's emergency department visit, specifically for upper back pain.",
+                "excerpt": "[V89.2XXA] · Neck pain [M54.2] · Upper back pain [M54.9] Visit Information ED Provider Note Dr. DING, PRISCILLA S was the supervising physician"
+            }
+        ],
+        "pageText": "Legal Copy  MEMORIAL MEDICAL CTR  MODESTO  1700 Coffee Road  Modesto CA 95355-2803  Prado, Jesus  MRN: 64572229, DOB: 2/24/1975, Sex: M  Adm: 5/16/2023, D/C: 5/16/2023  05/16/2023 - ED in Memorial Medical Center Emergency Department (continued)  Reason f
+or Visit  Chief complaint:   Auto accident  Visit diagnoses:  · · · · ·   MVA (motor vehicle accident) (primary) [V89.2XXA
+        ]  ·   Neck pain [M54.2
+        ]  ·   Upper back pain [M54.9
+        ]  Visit Information  ED Provider Note  Dr.   DING, PRISCILLA S   was the supervising physician f
+or the Resident, Physician Assistant or Nurse Practitioner for  this patient encounter.  Arrival Date/Time: 5/16/23 1038  Roomed Date/Time: 5/16/2023 1057  Electronically Signed: Ramin Lail, NP,
+        5/16/2023, Time: 2: 16 PM  Admission Information  Arrival Date/Time: 05/16/
+2023 10: 38  AM  Admit Date/Time: 05/16/2023 10: 57  AM  IP Adm. Date/Time:  Admission Type:   Emergency   Point of Origin:   Physician/self  Referral  Admit Category:  Means of Arrival:   Car   Primary Service:   Emergency   Secondary Service:   N/A  Transfer Source:
+Service Area:   CENTRAL VALLEY  REGION ACUTE  CARE  Unit:   Memorial Medical  Center Emergency  Department  Admit Provider:   Attending Provider:   Referring Provider:  ED Disposition  Discharge Information  Date/Time: 05/16/2023 2: 34 PM   Disposition:   Home Or Self C
+are   Destination:   —  Provider:   —   Unit:   Memorial Medical Center Emergency Department  Follow-up Information  Follow up With   Specialties   Details   Why   Contact Info  Pcp, No   In 2 days   GENERIC  Memorial Medical Center  Emergency Department  Emergency Medic
+ine   As needed, If symptoms  worsen  1700 Coffee Road  M o d e s t o   C ali f o r ni a  95355  209-569-7600  ED Provider Notes by Lail, Ramin, NP at 5/16/2023 1416  ED Disposition  Discharge  Condition  --  User  Lail, Ramin, NP  Date/Time  Tue May 16,
+        2023 2: 31 PM  C
+omment  --  I did not personally see this patient, but was immediately available to the midlevel practitioner for any  questions, assistance with work-up, lab and imaging interpretation, or procedures.  Priscilla S Ding, MD  Attestation signed by Ding, Priscilla Shee, MD
+ at 05/17/23 2334  Printed by [S338673
+        ] at 4/12/2024 1: 16 PM   Page   17","pageNumber": 24
+    },
+    {
+        "icdCodes": [
+            "S13.4XXA",
+            "S22.2XXA",
+            "V43.52XA"
+        ],
+        "nameOfDisease": "Neck pain,Upper back pain,MVA (motor vehicle accident)",
+        "amountSpent": 0,
+        "providerName": "Memorial Medical Center Modesto",
+        "doctorName": "Priscilla Ding, MD",
+        "medicalNote": "Patient presents with auto accident: MVA, restrained driver, rear-ended by a car going approx 70 mph. Denies airbag deployment. Head strike with no loss of consciousness. Complains of neck pain, back pain, and headache. History provided by patient, sp
+ouse, and relative. No previous medical or surgical history on file. No known allergies.","dateOfClaim": "2023-05-15T23:00:00.000Z",
+        "nameOfDiseaseByIcdCode": [
+            {
+                "icdCode": "S13.4XXA",
+                "nameOfDisease": "Neck pain",
+                "summary": "The ICD code S13.4XXA is relevant because the patient, Jesus Prado, presented to the emergency department with complaints of neck pain following a motor vehicle accident. This code is used for initial encounters involving neck pain due to injury.",
+                "excerpt": "MVA today. MVA this morning around 5:55 am. He was the driver, sealtbt on. No airbags deployed, he bumped his head to the seat head-rest in the back. No LOC per Pt was in shock for a moment. No blood thinners. Came with neck pain, L shoulder pain and
+upper back soreness."
+            },
+            {
+                "icdCode": "S22.2XXA",
+                "nameOfDisease": "Upper back pain",
+                "summary": "The ICD code S22.2XXA is relevant because the patient reported upper back soreness as a result of being rear-ended in a motor vehicle accident. This code is used for initial encounters involving upper back pain due to injury.",
+                "excerpt": "No airbags deployed, he bumped his head to the seat head-rest in the back. No LOC per Pt was in shock for a moment. No blood thinners. Came with neck pain, L shoulder pain and upper back soreness. ROS: All other systems reviewed and are negative excep
+t as noted in HPI"
+            },
+            {
+                "icdCode": "V43.52XA",
+                "nameOfDisease": "MVA (motor vehicle accident)",
+                "summary": "The ICD code V43.52XA is relevant because it describes the external cause of the patient's injuries, which were sustained in a motor vehicle accident where the patient was a restrained driver rear-ended by another vehicle.",
+                "excerpt": "CHIEF COMPLAINT entered by TRIAGE: Patient presents with: Auto accident: Mva , restrained driver, rear ended by a car going approx 70mph. Denies air bag deployment. +head strike +loc denies blood thinners c/o neck pain, back pain, headache denies n/v
+acting his normal self"
+            }
+        ],
+        "pageText": "Legal Copy  MEMORIAL MEDICAL CTR  MODESTO  1700 Coffee Road  Modesto CA 95355-2803  Prado, Jesus  MRN: 64572229, DOB: 2/24/1975, Sex: M  Adm: 5/16/2023, D/C: 5/16/2023  05/16/2023 - ED in Memorial Medical Center Emergency Department (continued)  ED Provi
+der Note (continued)  Room: CVMM IWR/PIT EWR  Supervising Physician: Ding, Pricilla, MD  MMC EMERGENCY DEPARTMENT NOTE  TIME: 5/16/2023 2: 16 PM  PCP:   No PCP  HISTORY  CHIEF COMPLAINT entered by TRIAGE:  Patient presents with:  Auto accident: Mva , restrained driver,
+rear ended by a car going approx 70mph. Denies air bag deployment. +head  strike +loc denies blood thinners c/o neck pain, back pain, headache denies n/v acting his normal self  Triage note reviewed.  HISTORY:  Historian is patient, spouse, and relative. History/Exam Lim
+itations: none  Jesus Prado is a 48 year old male, who presents to the ED with complaints of neck and upper back pain after the  MVA today. MVA this morning around 5: 55 am. He was the driver, sealtbt on. No airbags deployed, he bumped his  head to the seat head-rest in t
+he back. No LOC per Pt was in shock for a moment. No blood thinners. Came with  neck pain, L shoulder pain and upper back soreness.  ROS:  All other systems reviewed and are negative except as noted in HPI  PAST MEDICAL HISTORY:  There is no previous medical history on f
+ile.  PAST SURGICAL HISTORY:  There is no previous surgical history on file.  MEDICATIONS:  No outpatient medications have been marked as taking for the 5/16/23 encounter (Hospital Encounter).  ALLERGIES:  Review of patient's allergies indicates no known allergies.  SOCI
+AL HISTORY:  Social History  Tobacco Use  Smoking status: Not on file  Smokeless tobacco: Not on file  Alcohol use: Not on file  Drug use: Not on file  Printed by [S338673
+        ] at 4/12/2024 1: 16 PM   Page   18","pageNumber": 25
+    },
+    {
+        "icdCodes": [
+            "S13.4XXA",
+            "M54.2",
+            "M54.6",
+            "V43.52XA"
+        ],
+        "nameOfDisease": "Neck pain,Upper back pain,MVA (motor vehicle accident)",
+        "amountSpent": 0,
+        "providerName": "Memorial Medical Center Modesto",
+        "doctorName": "James Summers, MD",
+        "medicalNote": "Findings: The cardiac silhouette looks unremarkable. The lungs are clear. The skeletal structures look unremarkable. Impression: No acute process radiographically. Jesus Prado is a 48 year old male. Pt presents after a MVA with neck, upper back, and b
+ack pain. Pt was a restraint driver. Pt denies striking head to the dashboard but backwards to the head rest. No actual LOC, but was dazed after the initial accident he was in shock. No airbags deployed. Pt walked out of the car by themselves. Normal appearing without si
+gns or symptoms of serious injury. Denies taking any blood thinners. Some midline cervical spine tenderness and sensitivity on exam. Pt was placed in a cervical spine collar. Low suspicious for ICH or other intracranial traumatic injury. No seat-belt signs or abdominal e
+cchymosis to indicate concerns for serious trauma to thorax or abdomen. Pelvis without evidence of injury and patient is neurologically intact. Explained to Pt that they will likely be sore for the coming days and can use Tylenol or Ibuprofen as needed for pain. CT head
+and CT cervical spine, as well as CXR, are unremarkable. Pt/family was advised to return to ED or call 911 if any signs and symptoms concerning head injury such as excessive sleepiness, difficulty waking up or arousing Pt, abnormal behaviors, nausea or vomiting, increase
+d headaches, change in vision, unilateral weakness, slurred speech, or facial asymmetry. Pain medications as needed, muscle relaxers for lower back spasm as needed. Pt is not in need of any emergent medical intervention at this time. Patient is stable for discharge home
+and treatment as outpatient. Patient was advised to follow up with Primary physician in 1-3 days for further evaluation, needed treatment, and a referral to specialist if indicated by PMD. Patient was advised to come back to ED if symptoms not improved, new, or worsening
+ of existing symptoms in the next 24 hours. Pt was also advised to return to ED for a follow up if does not have a PMD, or unable to establish a follow up appt in the next 24-72 hours. See discharge instructions for more detailed return to ED criteria and discharge teach
+ing. Patient was educated on disease process and possible complications, as well as importance of following the prescribed treatments and medications, their side effects, and adverse effects. Pt is stable at the time of discharge.","dateOfClaim": "2023-05-15T23:00:00.000Z",
+        "nameOfDiseaseByIcdCode": [
+            {
+                "icdCode": "M54.2",
+                "nameOfDisease": "Neck pain",
+                "summary": "The ICD code M54.2 is relevant as it directly corresponds to the diagnosis of neck pain experienced by the patient following a motor vehicle accident, as noted in the medical report.",
+                "excerpt": "Pt presents after a MVA with neck, upper back, and back pain. Pt was a restraint Driver. Pt denies striking head to the dashboard but backwards to the head rest. No actual LOC, but was dazed after the initial accident he was in shock. No airbags deplo
+yed. Pt walked out of the car by themselves. Normal appearing without signs or symptoms of serious injury. Denies taking any blood thinners. Some midline cervical spine tenderness and sensitivity on exam. Pt was placed in a cervical spine collar. Low suspicious for ICH o
+r other intracranial traumatic injury. No seat-built signs or abdominal ecchymosis to indicate concerns for serious trauma to thorax or abdomen. Pelvis without evidence of injury and patient is neurologically intact. Explained to Pt that they will likely be sore for the
+coming days and can use Tylenol or Ibuprofen as needed for pain. CT head and CT cervical spine, as well as CXR, are unremarkable. Pt/family was advised to return to ED or call 911 if any signs and symptoms concerning head injury such as excessive sleepiness, difficulty w
+aking up or arousing Pt, abnormal behaviors, nausea or vomiting, increased headaches, change in vision, unilateral weakness, slurred speech, or facial asymmetry. Pain medications as needed, muscle relaxers for lower back spasm as needed. Pt is not in need of any emergent
+ medical intervention at this time. Patient is stable for discharge home and treatment as outpatient. Patient was advised to follow up with Primary physician in 1- 3 days for further evaluation, needed treatment, and a referral to specialist if indicated by PMD. Patient
+was advised to come back to ED if symptoms not improved, new, or worsening of existing symptoms in the next 24 hours. Pt was also advised to return to ED for a follow up if does not have a PMD, or unable to establish a follow up appt in the next 24 - 72 hours. See discha
+rge instructions for more detailed return to ED criteria and discharge teaching. Patient was educated on disease process and possible complications, as well as importance of following the prescribed treatments and medications, their side effects, and adverse effects. Pt
+is stable at the time of discharge. PROCEDURES/CRITICAL CARE/BEDSIDE ULTRASOUND DIAGNOSIS AND DISPOSITION DIAGNOSIS/IMPRESSION: Final diagnoses: [V89.2XXA
+                ] MVA (motor vehicle accident) [M54.2
+                ] Neck pain [M54.9
+                ] Upper back pain DISPOSITION: Printed by [S338673
+                ] at 4/12/20
+24 1: 16 PM Page 23"
+            },
+            {
+                "icdCode": "M54.6",
+                "nameOfDisease": "Upper back pain",
+                "summary": "The ICD code M54.6 is relevant as it corresponds to the diagnosis of upper back pain the patient experienced following the motor vehicle accident, as detailed in the medical report.",
+                "excerpt": "Pt presents after a MVA with neck, upper back, and back pain. Pt was a restraint Driver. Pt denies striking head to the dashboard but backwards to the head rest. No actual LOC, but was dazed after the initial accident he was in shock. No airbags deplo
+yed. Pt walked out of the car by themselves. Normal appearing without signs or symptoms of serious injury. Denies taking any blood thinners. Some midline cervical spine tenderness and sensitivity on exam. Pt was placed in a cervical spine collar. Low suspicious for ICH o
+r other intracranial traumatic injury. No seat-built signs or abdominal ecchymosis to indicate concerns for serious trauma to thorax or abdomen. Pelvis without evidence of injury and patient is neurologically intact. Explained to Pt that they will likely be sore for the
+coming days and can use Tylenol or Ibuprofen as needed for pain. CT head and CT cervical spine, as well as CXR, are unremarkable. Pt/family was advised to return to ED or call 911 if any signs and symptoms concerning head injury such as excessive sleepiness, difficulty w
+aking up or arousing Pt, abnormal behaviors, nausea or vomiting, increased headaches, change in vision, unilateral weakness, slurred speech, or facial asymmetry. Pain medications as needed, muscle relaxers for lower back spasm as needed. Pt is not in need of any emergent
+ medical intervention at this time. Patient is stable for discharge home and treatment as outpatient. Patient was advised to follow up with Primary physician in 1- 3 days for further evaluation, needed treatment, and a referral to specialist if indicated by PMD. Patient
+was advised to come back to ED if symptoms not improved, new, or worsening of existing symptoms in the next 24 hours. Pt was also advised to return to ED for a follow up if does not have a PMD, or unable to establish a follow up appt in the next 24 - 72 hours. See discha
+rge instructions for more detailed return to ED criteria and discharge teaching. Patient was educated on disease process and possible complications, as well as importance of following the prescribed treatments and medications, their side effects, and adverse effects. Pt
+is stable at the time of discharge. PROCEDURES/CRITICAL CARE/BEDSIDE ULTRASOUND DIAGNOSIS AND DISPOSITION DIAGNOSIS/IMPRESSION: Final diagnoses: [V89.2XXA
+                ] MVA (motor vehicle accident) [M54.2
+                ] Neck pain [M54.9
+                ] Upper back pain DISPOSITION: Printed by [S338673
+                ] at 4/12/20
+24 1: 16 PM Page 23"
+            },
+            {
+                "icdCode": "V43.52XA",
+                "nameOfDisease": "MVA (motor vehicle accident)",
+                "summary": "The ICD code V43.52XA is relevant as it identifies the motor vehicle accident that is the primary cause of the patient's neck and upper back pain, as described in the medical report.",
+                "excerpt": "Pt presents after a MVA with neck, upper back, and back pain. Pt was a restraint Driver. Pt denies striking head to the dashboard but backwards to the head rest. No actual LOC, but was dazed after the initial accident he was in shock. No airbags deplo
+yed. Pt walked out of the car by themselves. Normal appearing without signs or symptoms of serious injury. Denies taking any blood thinners. Some midline cervical spine tenderness and sensitivity on exam. Pt was placed in a cervical spine collar. Low suspicious for ICH o
+r other intracranial traumatic injury. No seat-built signs or abdominal ecchymosis to indicate concerns for serious trauma to thorax or abdomen. Pelvis without evidence of injury and patient is neurologically intact. Explained to Pt that they will likely be sore for the
+coming days and can use Tylenol or Ibuprofen as needed for pain. CT head and CT cervical spine, as well as CXR, are unremarkable. Pt/family was advised to return to ED or call 911 if any signs and symptoms concerning head injury such as excessive sleepiness, difficulty w
+aking up or arousing Pt, abnormal behaviors, nausea or vomiting, increased headaches, change in vision, unilateral weakness, slurred speech, or facial asymmetry. Pain medications as needed, muscle relaxers for lower back spasm as needed. Pt is not in need of any emergent
+ medical intervention at this time. Patient is stable for discharge home and treatment as outpatient. Patient was advised to follow up with Primary physician in 1- 3 days for further evaluation, needed treatment, and a referral to specialist if indicated by PMD. Patient
+was advised to come back to ED if symptoms not improved, new, or worsening of existing symptoms in the next 24 hours. Pt was also advised to return to ED for a follow up if does not have a PMD, or unable to establish a follow up appt in the next 24 - 72 hours. See discha
+rge instructions for more detailed return to ED criteria and discharge teaching. Patient was educated on disease process and possible complications, as well as importance of following the prescribed treatments and medications, their side effects, and adverse effects. Pt
+is stable at the time of discharge. PROCEDURES/CRITICAL CARE/BEDSIDE ULTRASOUND DIAGNOSIS AND DISPOSITION DIAGNOSIS/IMPRESSION: Final diagnoses: [V89.2XXA
+                ] MVA (motor vehicle accident) [M54.2
+                ] Neck pain [M54.9
+                ] Upper back pain DISPOSITION: Printed by [S338673
+                ] at 4/12/20
+24 1: 16 PM Page 23"
+            }
+        ],
+        "pageText": "Legal Copy  MEMORIAL MEDICAL CTR  MODESTO  1700 Coffee Road  Modesto CA 95355-2803  Prado, Jesus  MRN: 64572229, DOB: 2/24/1975, Sex: M  Adm: 5/16/2023, D/C: 5/16/2023  05/16/2023 - ED in Memorial Medical Center Emergency Department (continued)  ED Provi
+der Note (continued)  FINDINGS: The cardiac silhouette looks  unremarkable. The lungs are clear. The skeletal  structures look unremarkable.  Impression  I M P R E S S I O N :   N o   a c u t e   p r o c e s s  radiographically.  Electronically Signed by: James Summers,
+MD  5/16/2023 11: 24 AM  EKG INTERPRETATION:  ED COURSE/MDM  Jesus Prado is a 48 year old male   Pt presents after a MVA with neck, upper back, and back pain. Pt was a restraint  Driver. Pt denies striking head to the dashboard but backwards to the head rest. No actual LO
+C, but was dazed after  the initial accident he was in shock. No airbags deployed. Pt walked out of the car by themselves. Normal appearing  without signs or symptoms of serious injury. Denies taking any blood thinners. Some midline cervical spine  tenderness and sensiti
+vity on exam. Pt was placed in a cervical spine collar. Low suspicious for ICH or other  intracranial traumatic injury. No seat-built signs or abdominal ecchymosis to indicate concerns for serious trauma to  thorax or abdomen. Pelvis without evidence of injury and patien
+t is neurologically intact. Explained to Pt that they will  likely be sore for the coming days and can use Tylenol or Ibuprofen as needed for pain. CT head and CT cervical  spine, as well as CXR, are unremarkable. Pt/family was advised to return to ED or call 911 if any
+signs and symptoms  concerning head injury such as excessive sleepiness, difficulty waking up or arousing Pt, abnormal behaviors, nausea  or vomiting, increased headaches, change in vision, unilateral weakness, slurred speech, or facial asymmetry. Pain  medications as ne
+eded, muscle relaxers for lower back spasm as needed.  Pt is not in need of any emergent medical intervention at this time. Patient is stable for discharge home and treatment  as outpatient. Patient was advised to follow up with Primary physician in 1- 3 days for further
+ evaluation, needed  treatment, and a referral to specialist if indicated by PMD. Patient was advised to come back to ED if symptoms not  improved, new, or worsening of existing symptoms in the next 24 hours. Pt was also advised to return to ED for a  follow up if does n
+ot have a PMD, or unable to establish a follow up appt in the next 24 - 72 hours. See discharge  instructions for more detailed return to ED criteria and discharge teaching. Patient was educated on disease process  and possible complications, as well as importance of fol
+lowing the prescribed treatments and medications, their side  effects, and adverse effects. Pt is stable at the time of discharge.  PROCEDURES/CRITICAL CARE/BEDSIDE ULTRASOUND  DIAGNOSIS AND DISPOSITION  DIAGNOSIS/IMPRESSION:  Final diagnoses: [V89.2XXA
+        ] MVA (motor vehi
+cle accident)  [M54.2
+        ] Neck pain  [M54.9
+        ] Upper back pain  DISPOSITION:  Printed by [S338673
+        ] at 4/12/2024 1: 16 PM   Page   23","pageNumber": 30
+    },
+    {
+        "icdCodes": [
+            "M54.2",
+            "M54.5",
+            "R51.9",
+            "V43.52XA"
+        ],
+        "nameOfDisease": "Neck pain,Back pain,Headache,MVA (motor vehicle accident)",
+        "amountSpent": 0,
+        "providerName": "Memorial Medical Center Modesto",
+        "doctorName": "Priscilla S Ding, MD",
+        "medicalNote": "Jesus Prado is a 48 year old male who presents to the emergency department for evaluation after an auto accident. Patient was a restrained driver, rear-ended by a car going approximately 70 mph. Denies airbag deployment. Complaints of neck pain, back
+pain, headache. Denies nausea/vomiting, acting his normal self. Evaluated in the context of the global COVID-19 pandemic. Institutional protocols and algorithms for COVID-19 risk were followed during the patient's care in the ED.","dateOfClaim": "2023-05-15T23:00:00.000Z",
+        "nameOfDiseaseByIcdCode": [
+            {
+                "icdCode": "M54.2",
+                "nameOfDisease": "Cervicalgia (Neck Pain)",
+                "summary": "The ICD code M54.2 is relevant as the patient, Jesus Prado, presented with neck pain following a motor vehicle accident, which is a common symptom associated with cervicalgia.",
+                "excerpt": "... presents with: Auto accident: Mva , restrained driver, rear ended by a car going approx 70mph. Denies air bag deployment. +head strike +loc denies blood thinners c/o neck pain, back pain, headache denies n/v acting his normal self . ..."
+            },
+            {
+                "icdCode": "M54.5",
+                "nameOfDisease": "Low Back Pain",
+                "summary": "The ICD code M54.5 is relevant because the patient, Jesus Prado, reported back pain after being involved in a motor vehicle accident, which is a typical symptom of low back pain.",
+                "excerpt": "... presents with: Auto accident: Mva , restrained driver, rear ended by a car going approx 70mph. Denies air bag deployment. +head strike +loc denies blood thinners c/o neck pain, back pain, headache denies n/v acting his normal self . ..."
+            },
+            {
+                "icdCode": "R51.9",
+                "nameOfDisease": "Headache",
+                "summary": "The ICD code R51.9 is applicable as the patient, Jesus Prado, experienced a headache following the motor vehicle accident, which is a common symptom reported in such incidents.",
+                "excerpt": "... presents with: Auto accident: Mva , restrained driver, rear ended by a car going approx 70mph. Denies air bag deployment. +head strike +loc denies blood thinners c/o neck pain, back pain, headache denies n/v acting his normal self . ..."
+            },
+            {
+                "icdCode": "V43.52XA",
+                "nameOfDisease": "Motor Vehicle Accident (MVA)",
+                "summary": "The ICD code V43.52XA is relevant because it directly pertains to the motor vehicle accident that Jesus Prado was involved in, as described in the emergency department note.",
+                "excerpt": "... presents with: Auto accident: Mva , restrained driver, rear ended by a car going approx 70mph. Denies air bag deployment. +head strike +loc denies blood thinners c/o neck pain, back pain, headache denies n/v acting his normal self . ..."
+            }
+        ],
+        "pageText": "Legal Copy  MEMORIAL MEDICAL CTR  MODESTO  1700 Coffee Road  Modesto CA 95355-2803  Prado, Jesus  MRN: 64572229, DOB: 2/24/1975, Sex: M  Adm: 5/16/2023, D/C: 5/16/2023  05/16/2023 - ED in Memorial Medical Center Emergency Department (continued)  ED Provi
+der Note (continued)  Dr.   DING, PRISCILLA S   was the supervising physician for the Physician Assistant or Nurse Practitioner for this  patient encounter.  Electronically Signed: Ramin Lail, NP,
+        5/16/2023, Time: 10: 46 AM  RME  Chief complaint/HPI:  Jesus Prado is a 48 y
+ear old male who presents to the emergency department for evaluation of Patient presents with:  Auto accident: Mva , restrained driver, rear ended by a car going approx 70mph. Denies air bag deployment. +head  strike +loc denies blood thinners c/o neck pain, back pain, h
+eadache denies n/v acting his normal self  .  There were no vitals taken for this visit.  Brief Exam:  General: In no distress  Respiratory: No increased work of breathing  Neuro: Normal for age  Plan:  1.   Patient awaiting further evaluation  Patient was evaluated in t
+he Emergency Department for the symptoms described in the history of present illness.  He/she was evaluated in the context of the global COVID-19 pandemic, which necessitated consideration that the  patient might be at risk for infection with the SARS-CoV-2 virus that ca
+uses COVID-19. Institutional protocols and  algorithms that pertain to the evaluation of patients at risk for COVID-19 are in a state of rapid change based on  information released by regulatory bodies including the CDC and federal and state organizations. These policies
+ and  algorithms were followed during the patient's care in the ED.  Electronically signed by Lail, Ramin, NP at 05/16/23 2009  Electronically signed by Ding, Priscilla Shee, MD at 05/17/23 2334  ED Rapid Medical Exam by Lail, Ramin, NP at 5/16/2023 1046  Printed by [S33
+8673
+        ] at 4/12/2024 1: 16 PM   Page   25","pageNumber": 32
+    }
+]

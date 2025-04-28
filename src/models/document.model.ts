@@ -78,11 +78,14 @@ export class TempPageDocument {
   @prop({ default: false })
   public isCompleted!: boolean;
 
+  @prop({ default: false })
+  public reportGenerated!: boolean;
+
   @prop({ default: null })
   public jobId?: string;
 
   @prop()
-  public report?: Object[];
+  public report?: Object;
 
   public createdAt?: Date;
 }

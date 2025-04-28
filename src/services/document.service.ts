@@ -22,24 +22,27 @@ import {
   TempPageDocument,
   TempPageDocumentModel,
 } from "../models/document.model";
+import { MedicalRecordResponse, RawReport } from "../utils/ai/reportExtractor";
 import {
   addOcrExtractionBackgroundJob,
   addOcrExtractionStatusPollingJob,
-  addOcrPageExtractorBackgroundJob,
-  cancelOcrPageExtractorPolling,
+  cancelOcrExtractionPolling,
 } from "../utils/queue/producer";
 import { textractClient } from "../utils/textract";
+import { aiService, AIService } from "./ai.service";
 import OpenAIService from "./openai.service";
 
 const MAX_TOKENS = 16385;
 
 export class DocumentService {
   private openAiService: OpenAIService;
+  private aiService: AIService;
 
   constructor() {
     this.openAiService = new OpenAIService(
       process.env.OPENAI_API_KEY as string
     );
+    this.aiService = aiService;
   }
 
   // Split content into chunks
@@ -75,8 +78,6 @@ export class DocumentService {
   }
 
   async validateAmount(amount: string): Promise<number> {
-    console.log("Amount:", amount);
-
     // If the string is empty, return 0
     if (!amount?.trim()) {
       return 0;
@@ -136,9 +137,12 @@ export class DocumentService {
     }
   }
 
-  // Get ICD code from description
   async getIcdCodeFromDescription(description: string): Promise<string[]> {
-    const prompt = `Get the ICD 10 code for the following description: ${description}. Give the exact code no any added text after the ICD 10 code. For example, if the description is "Acute bronchitis due to coxsackievirus", the response should be J20.0. If there are multiple codes, provide all of them separated by commas. Do not fabricate the codes, only provide the exact codes. if none return empty string.`;
+    const prompt = `Get the ICD 10 code for the following description: ${description}. 
+    Give the exact code no any added text after the ICD 10 code. For example, if the description
+     is "Acute bronchitis due to coxsackievirus", the response should be J20.0. If there are multiple
+      codes, provide all of them separated by commas. Do not fabricate the codes, only provide the exact
+       codes. if none return empty string.`;
 
     // If the description contains the word "not provided" or "N/A", return an empty array
     if (
@@ -177,52 +181,11 @@ export class DocumentService {
     }
   }
 
-  private async processContentChunk(chunk: string): Promise<any[]> {
-    const MedicalRecord = z.object({
-      diseaseName: z.union([z.string(), z.array(z.string())]),
-      diagnosis: z.union([z.string(), z.array(z.string())]),
-      amountSpent: z.string(),
-      providerName: z.string(),
-      doctorName: z.string(),
-      medicalNote: z.string(),
-      date: z.string(),
-    });
-
-    // const prompt = `Here's the extracted document of a patient's medical record: ${chunk} I want you to process this text and provide me the information.
-    //  please ignore any questionnaire like content`;
-
-    const prompt = `
-You are processing a patient's medical document. Extract the following structured data:
-- Disease name(s)
-- Diagnosis(es)
-- Amount spent
-- Provider name
-- Doctor's name
-- Medical notes
-- Date
-
-❗️ Important Instructions:
-- Ignore any questionnaire-like content, such as sections with "Yes/No" questions, checkboxes, or form-style fields.
-- Do NOT extract sections like:
-  - "Do you smoke? Yes/No"
-  - "Are you taking medication? Yes/No"
-  - "What surgeries have you had?"
-  - Lists of conditions with checkboxes.
-
-Extracted document:
-"${chunk}"
-`;
-
-    const response = await this.openAiService.completeChat({
-      context: "Extract the patient report from the document",
-      prompt,
-      model: "gpt-4o",
-      temperature: 0.4,
-      response_format: zodResponseFormat(MedicalRecord, "report"),
-    });
-
-    // console.log("processContentChunk", response);
-    return { ...response, chunk };
+  private async processContentChunk(
+    chunk: string
+  ): Promise<MedicalRecordResponse | []> {
+    // return this.aiService.extractMedicalRecord(chunk);
+    return [];
   }
 
   private getDiseaseName(
@@ -247,24 +210,12 @@ Extracted document:
         contentChunks.map((chunk) => this.processContentChunk(chunk))
       );
 
-      // Define the type of result
-      type ResultType = {
-        amountSpent: string;
-        date: string;
-        diseaseName: string | string[];
-        diagnosis: string | string[];
-        providerName: string;
-        doctorName: string;
-        medicalNote: string;
-        chunk: string;
-      };
-
       // Flatten the results array
       const flattenedResults = results.flat();
 
       // Create report objects from flattened results
       const reportObjects = await Promise.all(
-        flattenedResults.flatMap(async (result: ResultType) => {
+        flattenedResults.flatMap(async (result: MedicalRecordResponse) => {
           const amountSpent = await this.validateAmount(
             result.amountSpent || ""
           );
@@ -295,7 +246,8 @@ Extracted document:
             icdCodes,
             diseaseNames: nameOfDisease,
             note: nameOfDisease + " " + result.medicalNote,
-            chunk: result.chunk,
+            //@ts-ignore
+            chunk: result?.chunk || "",
           });
 
           //check to make sure
@@ -312,7 +264,8 @@ Extracted document:
               medicalNote: result.medicalNote || "",
               dateOfClaim,
               nameOfDiseaseByIcdCode: diseaseNameByIcdCode,
-              chunk: result.chunk,
+              //@ts-ignore
+              chunk: result?.chunk || "",
             },
           ];
         })
@@ -674,11 +627,11 @@ Please ensure the output is clear, structured, and easy to parse.
           jobId: content,
         });
         if (doc) {
-          await addOcrExtractionBackgroundJob("extractOcr", {
-            documentId: doc._id,
-            isSinglePage: true,
-          });
-          await addOcrExtractionStatusPollingJob(content);
+          // await addOcrExtractionBackgroundJob("extractOcr", {
+          //   documentId: doc._id,
+          //   isSinglePage: true,
+          // });
+          // await addOcrExtractionStatusPollingJob(content);
         }
       }
       content = "";
@@ -770,28 +723,24 @@ Please ensure the output is clear, structured, and easy to parse.
     return fileContent;
   }
 
-  async getCombinedDocumentContent(jobId: string): Promise<string> {
+  async getCombinedDocumentContent(
+    jobId: string
+  ): Promise<{ success: boolean; pageText: string }> {
     try {
       let nextToken: string | undefined = undefined;
       console.log("Fetching combined document content for job:", jobId);
 
       // 1️⃣ Check if Textract job is still running before fetching results
       const jobStatus = await this.getTextractJobStatus(jobId);
-      if (!jobStatus) return "";
+      if (!jobStatus) return { success: false, pageText: "" };
       if (jobStatus === "IN_PROGRESS") {
         console.log("⏳ Textract job still processing...");
-        const tempDoc = await TempPageDocumentModel.findOne({ jobId }).lean();
-        if (tempDoc && tempDoc?.pdfS3Key) {
-          console.log(`Job ${jobId} added again to queue`);
-          // await this.extractContentFromDocumentUsingTextract(tempDoc.pdfS3Key);
-          await addOcrPageExtractorBackgroundJob(jobId);
-        }
-        return ""; // Exit early since the job isn't done
+        return { success: false, pageText: "" }; // Exit early since the job isn't done
       }
       if (jobStatus === "SUCCEEDED") {
         console.log("✅ Textract job completed successfully");
         // cancelOcrPageExtractorPolling(jobId);
-        // cancelOcrExtractionPolling(jobId);
+        await cancelOcrExtractionPolling(jobId);
       }
 
       console.log("⏳ Running loop to get ocr content");
@@ -846,7 +795,7 @@ Please ensure the output is clear, structured, and easy to parse.
         "filtered_in_document_output.txt"
       );
 
-      return filteredFileContent || "";
+      return { success: true, pageText: filteredFileContent };
     } catch (error) {
       console.log("❌ Error getting combined document content:", error);
       throw new Error("Failed to get combined document content");
@@ -965,7 +914,7 @@ Please ensure the output is clear, structured, and easy to parse.
       // Process each chunk and collect responses
       const responses = await Promise.all(
         chunks.map(async (chunk) => {
-          const prompt = `Extract the patient details, encounters, and claims from the document below from each page and group them by page: ${chunk}`;
+          const prompt = `Extract the patient details, encounters, and claims from this page: ${chunk}`;
           const response = await this.openAiService.completeChat({
             context:
               "Extract the patient details, encounters, and claims from the document below:",
@@ -1138,14 +1087,16 @@ Please ensure the output is clear, structured, and easy to parse.
   async extractReportFromDocumentOCRJobId(jobId: string) {
     try {
       // Get combined document content
-      const content = await this.getCombinedDocumentContent(jobId);
+      const { success, pageText } = await this.getCombinedDocumentContent(
+        jobId
+      );
 
-      if (!content) {
+      if (!pageText) {
         throw new Error("No content extracted from document");
       }
 
       // Clean content with keywords
-      const contentExtracts = await this.getContentFromDocument(content);
+      const contentExtracts = await this.getContentFromDocument(pageText);
 
       if (!contentExtracts) {
         throw new Error("No content extracted from document");
@@ -1193,5 +1144,146 @@ Please ensure the output is clear, structured, and easy to parse.
     await DocumentModel.deleteMany({ case: caseId });
     await TempPageDocumentModel.deleteMany({ document: { $in: alldocIds } });
     return true;
+  }
+
+  // Add this new method for single page processing
+  // async processDocumentContentV2(content: string): Promise<any> {
+  //   try {
+  //     if (!content?.trim()) {
+  //       return null;
+  //     }
+
+  //     const result = await this.aiService.extractMedicalRecord(content);
+  //     console.log("result", result);
+
+  //     const amountSpent = await this.validateAmount(result.amountSpent || "");
+  //     const dateOfClaim = await this.validateDateStr(result.date || "");
+
+  //     const nameOfDisease = this.getDiseaseName(
+  //       result.diseaseName,
+  //       result.diagnosis
+  //     );
+
+  //     if (!nameOfDisease || nameOfDisease.toLowerCase() === "not specified") {
+  //       return null;
+  //     }
+
+  //     const icdCodes = await this.getIcdCodeFromDescription(
+  //       nameOfDisease + " " + result.medicalNote
+  //     );
+
+  //     if (
+  //       !icdCodes.length ||
+  //       icdCodes.join("") === "" ||
+  //       !/[a-zA-Z0-9]/.test(icdCodes.join(""))
+  //     ) {
+  //       return null;
+  //     }
+
+  //     const diseaseNameByIcdCode = await this.getStreamlinedDiseaseName({
+  //       icdCodes,
+  //       diseaseNames: nameOfDisease,
+  //       note: nameOfDisease + " " + result.medicalNote,
+  //       chunk: content,
+  //     });
+
+  //     return {
+  //       icdCodes,
+  //       nameOfDisease: nameOfDisease || "",
+  //       amountSpent: amountSpent || 0,
+  //       providerName: result.providerName || "",
+  //       doctorName: result.doctorName || "",
+  //       medicalNote: result.medicalNote || "",
+  //       dateOfClaim,
+  //       nameOfDiseaseByIcdCode: diseaseNameByIcdCode,
+  //       pageText: content,
+  //     };
+  //   } catch (error) {
+  //     console.log("Error processing document content:", error);
+  //     return null;
+  //   }
+  // }
+
+  // Add this new method for single page processing
+  async processRawReport(result: RawReport) {
+    try {
+      const amountSpent = await this.validateAmount(result.amountSpent || "");
+      const dateOfClaim = await this.validateDateStr(result.date || "");
+
+      const nameOfDisease = this.getDiseaseName(
+        result.diseaseName,
+        result.diagnosis
+      );
+
+      if (!nameOfDisease || nameOfDisease.toLowerCase() === "not specified") {
+        return [];
+      }
+
+      const icdCodes = await this.getIcdCodeFromDescription(
+        nameOfDisease + " " + result.medicalNote
+      );
+
+      if (
+        !icdCodes.length ||
+        icdCodes.join("") === "" ||
+        !/[a-zA-Z0-9]/.test(icdCodes.join(""))
+      ) {
+        return [];
+      }
+
+      const diseaseNameByIcdCode = await this.getStreamlinedDiseaseName({
+        icdCodes,
+        diseaseNames: nameOfDisease,
+        note: nameOfDisease + " " + result.medicalNote,
+        chunk: result.chunk,
+      });
+
+      return [
+        {
+          icdCodes,
+          nameOfDisease: nameOfDisease || "",
+          amountSpent: amountSpent || 0,
+          providerName: result.providerName || "",
+          doctorName: result.doctorName || "",
+          medicalNote: result.medicalNote || "",
+          dateOfClaim,
+          nameOfDiseaseByIcdCode: diseaseNameByIcdCode,
+          pageText: result.chunk,
+          pageNumber: result.pageNumber,
+          pageId: result.pageId,
+        },
+      ];
+    } catch (error) {
+      console.log("Error processing document content:", error);
+      return [];
+    }
+  }
+
+  // Add this new method for temp page document processing
+  async generateReportForTempPageDocumentV2(
+    doc: TempPageDocument
+  ): Promise<any> {
+    try {
+      const content = doc.pageText?.trim();
+      if (!content) {
+        return null;
+      }
+
+      // const result = await this.processDocumentContentV2(content);
+
+      // if (!result) {
+      //   return null;
+      // }
+
+      // // Add document ID to the result
+      // return {
+      //   ...result,
+      //   document: doc.document as string,
+      //   // page: doc.page,
+      // };
+    } catch (error) {
+      console.log("Error generating report for document:", error);
+      return null;
+    }
   }
 }
