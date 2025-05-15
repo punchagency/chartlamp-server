@@ -12,6 +12,7 @@ import { icdcodeClassificationQueue } from "./icdcodeClassification/producer";
 import { ocrPageExtractorQueue } from "./ocrPageExtractor/producer";
 
 async function startWorkers() {
+  console.error = () => {};
   console.log("🚀 Starting background workers...");
   console.log("RUN_WORKERS - workers", process.env.RUN_WORKERS);
 

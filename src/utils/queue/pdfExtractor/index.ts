@@ -6,6 +6,7 @@ import { connectToMongo } from "../../mongo";
 import { createPdfTextExtractorWorker } from "./worker";
 
 async function startPdfExtractorWorker() {
+  console.error = () => {};
   console.log("🚀 Starting pdf extractor background workers..");
   console.log("RUN_WORKERS - Pdf extractor", process.env.RUN_WORKERS);
 
