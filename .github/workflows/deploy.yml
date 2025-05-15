@@ -6,7 +6,7 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  CLUSTER_NAME: chartlamp-eks-cluster
+  CLUSTER_NAME: chartlamp-api-eks-cluster
   IMAGE_TAG: ${{ github.sha }}
   ECR_REPO: chartlamp-api
 
