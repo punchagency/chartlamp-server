@@ -1,7 +1,6 @@
 import dotenv from "dotenv-safe";
-if (process.env.NODE_ENV === "local") {
-  dotenv.config();
-}
+
+dotenv.config({ example: undefined });
 
 import { createIcdcodClassificationWorker } from "./icdcodeClassification/worker";
 import { createOcrPageExtractorWorker } from "./ocrPageExtractor/worker";

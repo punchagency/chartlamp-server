@@ -1,9 +1,7 @@
 import dotenv from "dotenv-safe";
 import cron from "node-cron";
 
-if (process.env.NODE_ENV === "local") {
-  dotenv.config();
-}
+  dotenv.config({ example: undefined });
 
 import { ExpressAdapter } from "@bull-board/express";
 import { createBullBoard } from "@bull-board/api";
