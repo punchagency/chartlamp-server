@@ -1,7 +1,5 @@
 {
-
   "compilerOptions": {
-
     "target": "esnext",
 
     "module": "commonjs",
@@ -23,7 +21,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "moduleResolution": "node"
-
-  }
-
+  },
+  "exclude": ["node_modules", "dist", "k8s", "terraform", ".github"]
 }
