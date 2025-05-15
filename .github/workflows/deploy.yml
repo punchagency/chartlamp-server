@@ -74,32 +74,34 @@ jobs:
         run: |
           aws eks update-kubeconfig --region $AWS_REGION --name $CLUSTER_NAME
 
-      - name: Apply Kubernetes secrets
+      - name: Export secrets and apply
         run: |
-          sed "s|<API_KEY>|${{ secrets.API_KEY }}|g" k8s/secret.yaml |
-          sed "s|<APP_NAME>|${{ secrets.APP_NAME }}|g" |
-          sed "s|<SERVER_URL>|${{ secrets.SERVER_URL }}|g" |
-          sed "s|<AWS_ACCESS_KEY_ID>|${{ secrets.AWS_ACCESS_KEY_ID }}|g" |
-          sed "s|<AWS_REGION>|${{ secrets.AWS_REGION }}|g" |
-          sed "s|<AWS_SECRET_ACCESS_KEY>|${{ secrets.AWS_SECRET_ACCESS_KEY }}|g" |
-          sed "s|<MONGODB_CONNECTION_STRING>|${{ secrets.MONGODB_CONNECTION_STRING }}|g" |
-          sed "s|<NODE_ENV>|${{ secrets.NODE_ENV }}|g" |
-          sed "s|<JWT_SECRET>|${{ secrets.JWT_SECRET }}|g" |
-          sed "s|<OPENAI_API_KEY>|${{ secrets.OPENAI_API_KEY }}|g" |
-          sed "s|<PRIVATE_KEY>|${{ secrets.PRIVATE_KEY }}|g" |
-          sed "s|<PUBLIC_KEY>|${{ secrets.PUBLIC_KEY }}|g" |
-          sed "s|<SENDGRID_API_KEY>|${{ secrets.SENDGRID_API_KEY }}|g" |
-          sed "s|<SESSION_SECRET>|${{ secrets.SESSION_SECRET }}|g" |
-          sed "s|<TWILIO_ACCOUNT_SID>|${{ secrets.TWILIO_ACCOUNT_SID }}|g" |
-          sed "s|<TWILIO_AUTH_TOKEN>|${{ secrets.TWILIO_AUTH_TOKEN }}|g" |
-          sed "s|<TWILIO_PHONE_NUMBER>|${{ secrets.TWILIO_PHONE_NUMBER }}|g" |
-          sed "s|<FROM_EMAIL>|${{ secrets.FROM_EMAIL }}|g" |
-          sed "s|<CORS_WHITELIST>|${{ secrets.CORS_WHITELIST }}|g" |
-          sed "s|<FRONTEND_URL>|${{ secrets.FRONTEND_URL }}|g" |
-          sed "s|<REDIS_HOST>|${{ secrets.REDIS_HOST }}|g" |
-          sed "s|<REDIS_PORT>|${{ secrets.REDIS_PORT }}|g" |
-          sed "s|<REDIS_PASSWORD>|${{ secrets.REDIS_PASSWORD }}|g" |
-          kubectl apply -f -
+          export API_KEY="${{ secrets.API_KEY }}"
+          export APP_NAME="${{ secrets.APP_NAME }}"
+          export SERVER_URL="${{ secrets.SERVER_URL }}"
+          export AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}"
+          export AWS_REGION="${{ secrets.AWS_REGION }}"
+          export AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+          export MONGODB_CONNECTION_STRING="${{ secrets.MONGODB_CONNECTION_STRING }}"
+          export NODE_ENV="${{ secrets.NODE_ENV }}"
+          export FROM_EMAIL="${{ secrets.FROM_EMAIL }}"
+          export JWT_SECRET="${{ secrets.JWT_SECRET }}"
+          export OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}"
+          export PRIVATE_KEY="${{ secrets.PRIVATE_KEY }}"
+          export PUBLIC_KEY="${{ secrets.PUBLIC_KEY }}"
+          export SENDGRID_API_KEY="${{ secrets.SENDGRID_API_KEY }}"
+          export SESSION_SECRET="${{ secrets.SESSION_SECRET }}"
+          export TWILIO_ACCOUNT_SID="${{ secrets.TWILIO_ACCOUNT_SID }}"
+          export TWILIO_AUTH_TOKEN="${{ secrets.TWILIO_AUTH_TOKEN }}"
+          export TWILIO_PHONE_NUMBER="${{ secrets.TWILIO_PHONE_NUMBER }}"
+          export CORS_WHITELIST="${{ secrets.CORS_WHITELIST }}"
+          export FRONTEND_URL="${{ secrets.FRONTEND_URL }}"
+          export REDIS_HOST="${{ secrets.REDIS_HOST }}"
+          export REDIS_PORT="${{ secrets.REDIS_PORT }}"
+          export REDIS_PASSWORD="${{ secrets.REDIS_PASSWORD }}"
+
+          envsubst < k8s/secret.yaml | kubectl apply -f -
+
 
       - name: Deploy to EKS
         run: |
