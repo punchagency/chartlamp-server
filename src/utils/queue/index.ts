@@ -1,6 +1,6 @@
-import dotenv from "dotenv-safe";
+import dotenv from "dotenv";
 
-dotenv.config({ example: undefined });
+dotenv.config();
 
 import { createIcdcodClassificationWorker } from "./icdcodeClassification/worker";
 import { createOcrPageExtractorWorker } from "./ocrPageExtractor/worker";
@@ -13,6 +13,7 @@ import { ocrPageExtractorQueue } from "./ocrPageExtractor/producer";
 
 async function startWorkers() {
   console.log("🚀 Starting background workers...");
+  console.log("RUN_WORKERS - workers", process.env.RUN_WORKERS);
 
   await connectToMongo();
 

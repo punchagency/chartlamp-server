@@ -1,12 +1,13 @@
-import dotenv from "dotenv-safe";
+import dotenv from "dotenv";
 
-dotenv.config({ example: undefined });
+dotenv.config();
 
 import { connectToMongo } from "../../mongo";
 import { createPdfTextExtractorWorker } from "./worker";
 
 async function startPdfExtractorWorker() {
   console.log("🚀 Starting pdf extractor background workers..");
+  console.log("RUN_WORKERS - Pdf extractor", process.env.RUN_WORKERS);
 
   await connectToMongo();
 

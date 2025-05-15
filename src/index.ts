@@ -1,7 +1,7 @@
-import dotenv from "dotenv-safe";
+import dotenv from "dotenv";
 import cron from "node-cron";
 
-  dotenv.config({ example: undefined });
+  dotenv.config();
 
 import { ExpressAdapter } from "@bull-board/express";
 import { createBullBoard } from "@bull-board/api";
@@ -79,9 +79,10 @@ console.log("Cron job scheduled....");
 
 const start = async (): Promise<void> => {
   try {
-    // console.error = () => {};
+    console.error = () => {};
     await connectToMongo();
     app.listen(PORT, () => {
+      console.log("RUN_WORKERS", process.env.RUN_WORKERS);
       console.log(`Server started on port ${PORT}!!!!!!!`);
     });
   } catch (error) {
