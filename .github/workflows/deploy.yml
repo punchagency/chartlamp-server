@@ -63,7 +63,7 @@ jobs:
 
       - name: Build and Push PDF Worker Docker Image
         run: |
-          PDF_IMAGE_URI=${{ steps.ecr_output.outputs.ecr_uri }}-pdf-worker:${{ env.IMAGE_TAG }}
+          PDF_IMAGE_URI=${{ steps.ecr_output.outputs.ecr_uri }}:${{ env.IMAGE_TAG }}
           echo "Using PDF worker image: $PDF_IMAGE_URI"
           docker build -f Dockerfile.pdf-worker -t $PDF_IMAGE_URI .
           docker push $PDF_IMAGE_URI
