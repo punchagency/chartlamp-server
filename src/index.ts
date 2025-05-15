@@ -56,7 +56,7 @@ app.use("/api/v1", api);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-console.log("Scheduling cron job...");
+console.log("Scheduling cron job.....");
 
 cron.schedule("* * * * *", async () => {
   console.log("Running a task every minute!!");
