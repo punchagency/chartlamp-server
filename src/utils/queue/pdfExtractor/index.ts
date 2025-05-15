@@ -33,7 +33,10 @@ async function startPdfExtractorWorker() {
   process.on("SIGINT", shutdown);
 }
 
-startPdfExtractorWorker().catch((err) => {
-  console.error("❌ Failed to start pdf extractor workers:", err);
-  process.exit(1);
-});
+if (process.env.RUN_WORKERS === "true") {
+  startPdfExtractorWorker().catch((err) => {
+    console.error("❌ Failed to start pdf extractor workers:", err);
+    process.exit(1);
+  });
+}
+

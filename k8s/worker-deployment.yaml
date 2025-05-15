@@ -33,3 +33,6 @@ spec:
           envFrom:
             - secretRef:
                 name: app-secrets
+          env:
+            - name: RUN_WORKERS
+              value: "true"

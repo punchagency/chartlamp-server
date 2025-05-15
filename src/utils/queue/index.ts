@@ -45,10 +45,12 @@ async function startWorkers() {
   process.on("SIGINT", shutdown);
 }
 
-startWorkers().catch((err) => {
-  console.error("❌ Failed to start workers:", err);
-  process.exit(1);
-});
+if (process.env.RUN_WORKERS === "true") {
+  startWorkers().catch((err) => {
+    console.error("❌ Failed to start workers:", err);
+    process.exit(1);
+  });
+}
 
 export const allQueues: Queue[] = [
   icdcodeClassificationQueue,
