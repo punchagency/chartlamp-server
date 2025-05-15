@@ -4,6 +4,9 @@ dotenv.config();
 
 import { connectToMongo } from "../../mongo";
 import { createPdfTextExtractorWorker } from "./worker";
+import { redis } from "../../redis";
+import { icdcodeClassificationQueue } from "../icdcodeClassification/producer";
+import { pdfTextExtractorQueue } from "./producer";
 
 async function startPdfExtractorWorker() {
   console.error = () => {};
@@ -40,4 +43,18 @@ if (process.env.RUN_WORKERS === "true") {
     process.exit(1);
   });
 }
+
+process.on("SIGTERM", async () => {
+  console.log("SIGTERM received");
+  await pdfTextExtractorQueue.close();
+  await redis.quit();
+  process.exit(0);
+});
+
+process.on("SIGINT", async () => {
+  console.log("SIGINT received");
+  await pdfTextExtractorQueue.close();
+  await redis.quit();
+  process.exit(0);
+});
 

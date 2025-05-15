@@ -2,14 +2,15 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-import { createIcdcodClassificationWorker } from "./icdcodeClassification/worker";
-import { createOcrPageExtractorWorker } from "./ocrPageExtractor/worker";
-import { createPageProcessingWorker } from "./pageProcessing/worker";
-import { connectToMongo } from "../mongo";
 import { Queue } from "bullmq";
-import { pageProcessingQueue } from "./pageProcessing/producer";
+import { connectToMongo } from "../mongo";
+import { redis } from "../redis";
 import { icdcodeClassificationQueue } from "./icdcodeClassification/producer";
+import { createIcdcodClassificationWorker } from "./icdcodeClassification/worker";
 import { ocrPageExtractorQueue } from "./ocrPageExtractor/producer";
+import { createOcrPageExtractorWorker } from "./ocrPageExtractor/worker";
+import { pageProcessingQueue } from "./pageProcessing/producer";
+import { createPageProcessingWorker } from "./pageProcessing/worker";
 
 async function startWorkers() {
   console.error = () => {};
@@ -58,3 +59,21 @@ export const allQueues: Queue[] = [
   ocrPageExtractorQueue,
   pageProcessingQueue,
 ];
+
+process.on("SIGTERM", async () => {
+  console.log("SIGTERM received");
+  await icdcodeClassificationQueue.close();
+  await ocrPageExtractorQueue.close();
+  await pageProcessingQueue.close();
+  await redis.quit();
+  process.exit(0);
+});
+
+process.on("SIGINT", async () => {
+  console.log("SIGINT received");
+  await icdcodeClassificationQueue.close();
+  await ocrPageExtractorQueue.close();
+  await pageProcessingQueue.close();
+  await redis.quit();
+  process.exit(0);
+});

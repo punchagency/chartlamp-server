@@ -1,3 +1,4 @@
+import { redis } from "../../redis";
 import { createIcdcodeClassificationQueue } from "./queue";
 
 export const icdcodeClassificationQueue = createIcdcodeClassificationQueue();
@@ -16,11 +17,3 @@ export async function addIcdcodeClassificationBackgroundJob(
     throw error;
   }
 }
-
-export const closeQueues = async () => {
-  console.log("closing queues...");
-  await icdcodeClassificationQueue.close();
-};
-
-process.on("SIGTERM", closeQueues);
-process.on("SIGINT", closeQueues);

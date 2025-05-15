@@ -31,12 +31,3 @@ export async function cancelPdfTextExtractorPolling(pageId: string) {
   await pdfTextExtractorQueue.removeJobScheduler(`scheduler-${pageId}`);
   console.log("🛑 Stopped polling job");
 }
-
-export const closeQueues = async () => {
-  console.log("closing queues...");
-  await pdfTextExtractorQueue.close();
-};
-
-
-process.on("SIGTERM", closeQueues);
-process.on("SIGINT", closeQueues);

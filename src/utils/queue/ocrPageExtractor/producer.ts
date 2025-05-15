@@ -30,11 +30,3 @@ export async function cancelOcrPageExtractorPolling(jobId: string) {
   await ocrPageExtractorQueue.removeJobScheduler(`scheduler-${jobId}`);
   console.log("🛑 Stopped polling job");
 }
-
-export const closeQueues = async () => {
-  console.log("closing queues...");
-  await ocrPageExtractorQueue.close();
-};
-
-process.on("SIGTERM", closeQueues);
-process.on("SIGINT", closeQueues);
