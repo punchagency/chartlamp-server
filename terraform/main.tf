@@ -56,7 +56,7 @@ module "eks" {
       desired_size = 1
       min_size     = 1
       max_size     = 3
-      instance_types = ["t3.medium"]
+      instance_types = ["t3.small"]
       labels = {
         role = "api"
       }
@@ -66,7 +66,7 @@ module "eks" {
       desired_size = 1
       min_size     = 1
       max_size     = 5
-      instance_types = ["t3.medium"]
+      instance_types = ["t3.small"]
       labels = {
         role = "worker"
       }
