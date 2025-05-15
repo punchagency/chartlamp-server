@@ -34,20 +34,25 @@ export function createWorker(
   processor: string | Processor,
   connection: ConnectionOptions
 ) {
-  const concurrency = getOptimalConcurrency();
-  console.log("concurrency", concurrency);
-  const worker = new Worker(name, processor, {
-    connection,
-    concurrency,
-  });
+  try {
+    const concurrency = getOptimalConcurrency();
+    console.log("concurrency", concurrency);
+    const worker = new Worker(name, processor, {
+      connection,
+      concurrency,
+    });
 
-  worker.on("completed", (_job: any, _err: any) => {
-    console.log(`Completed job on queue ${name}`);
-  });
+    worker.on("completed", (_job: any, _err: any) => {
+      console.log(`Completed job on queue ${name}`);
+    });
 
-  worker.on("failed", (_job: any, err: any) => {
-    console.log(`Faille job on queue ${name}`, err);
-  });
+    worker.on("failed", (_job: any, err: any) => {
+      console.log(`Faille job on queue ${name}`, err);
+    });
 
-  return { worker };
+    return { worker };
+  } catch (error) {
+    console.error("❌ Failed to create worker", error);
+    throw error;
+  }
 }
