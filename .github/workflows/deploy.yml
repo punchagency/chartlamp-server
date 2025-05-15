@@ -99,6 +99,7 @@ jobs:
           export REDIS_HOST="${{ secrets.REDIS_HOST }}"
           export REDIS_PORT="${{ secrets.REDIS_PORT }}"
           export REDIS_PASSWORD="${{ secrets.REDIS_PASSWORD }}"
+          export PORT="${{ secrets.PORT }}"
 
           envsubst < k8s/secret.yaml | kubectl apply -f -
 

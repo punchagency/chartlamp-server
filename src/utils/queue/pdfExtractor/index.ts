@@ -1,5 +1,7 @@
 import dotenv from "dotenv-safe";
-dotenv.config();
+if (process.env.NODE_ENV === "local") {
+  dotenv.config();
+}
 
 import { connectToMongo } from "../../mongo";
 import { createPdfTextExtractorWorker } from "./worker";

@@ -1,6 +1,9 @@
 import dotenv from "dotenv-safe";
 import cron from "node-cron";
-dotenv.config(); // Ensure this is the first line
+
+if (process.env.NODE_ENV === "local") {
+  dotenv.config();
+}
 
 import { ExpressAdapter } from "@bull-board/express";
 import { createBullBoard } from "@bull-board/api";
@@ -36,7 +39,8 @@ app.use(morgan("combined"));
 app.set("trust proxy", 1); // Trust first proxy
 
 app.get("/", (_req: Request, res: Response): Response => {
-  return res.json({ message: "Chartlamp server 🤟" });
+  // return res.json({ message: "Chartlamp server 🤟" });
+  return res.status(200).send("Chartlamp server 🤟");
 });
 
 const serverAdapter = new ExpressAdapter();
