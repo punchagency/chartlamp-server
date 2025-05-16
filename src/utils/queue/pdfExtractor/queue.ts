@@ -5,6 +5,7 @@ import { redis } from "../../redis";
 export const createPdfTextExtractorQueue = () => {
   const pdfTextExtractorQueue = new Queue(pdfTextExtractorQueueName, {
     connection: redis,
+    prefix: `{${pdfTextExtractorQueueName}}`,
   });
   return pdfTextExtractorQueue;
 };

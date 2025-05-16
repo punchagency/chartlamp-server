@@ -173,7 +173,7 @@ export class Case {
 
   @prop({
     required: true,
-    enum: ["local", "development", "production"],
+    enum: ["local", "development", "production", 'dev'],
     default: "production",
   })
   public env!: string;
