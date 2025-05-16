@@ -83,7 +83,7 @@ const start = async (): Promise<void> => {
     await connectToMongo();
     app.listen(PORT, () => {
       console.log("RUN_WORKERS", process.env.RUN_WORKERS);
-      console.log(`Server started on port ${PORT}!!`);
+      console.log(`Server started on port ${PORT}!!!!`);
     });
   } catch (error) {
     // console.error(error);

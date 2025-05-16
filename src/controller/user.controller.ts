@@ -84,11 +84,20 @@ export class UserController {
         await this.userService.login(email, password);
       // Set session expiration to 24 hours
       // Set cookie with auth token
+      // res.cookie("authToken", authToken, {
+      //   httpOnly: true,
+      //   secure: process.env.NODE_ENV !== "local", // Ensure this matches your environment
+      //   sameSite: process.env.NODE_ENV !== "local" ? "none" : "lax", // Adjust based on your needs
+      //   maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      // });
+
+      // for testing the new deployment .... remove later
+
       res.cookie("authToken", authToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV !== "local", // Ensure this matches your environment
-        sameSite: process.env.NODE_ENV !== "local" ? "none" : "lax", // Adjust based on your needs
-        maxAge: 24 * 60 * 60 * 1000, // 24 hours
+        secure: false,
+        sameSite: "none",
+        maxAge: 24 * 60 * 60 * 1000,
       });
 
       res
