@@ -23,7 +23,8 @@ spec:
                       - api
       containers:
         - name: chartlamp-api
-          image: <your_ecr_image_uri> 
+          image: <your_ecr_image_uri>
+          command: ["node", "dist/index.js"]
           ports:
             - containerPort: 5000
           envFrom:
