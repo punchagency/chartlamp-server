@@ -35,12 +35,12 @@ export function createWorker(
   connection: ConnectionOptions
 ) {
   try {
-    const concurrency = getOptimalConcurrency();
-    console.log("concurrency", concurrency);
+    // const concurrency = getOptimalConcurrency();
+    // console.log("concurrency", concurrency);
     const worker = new Worker(name, processor, {
       connection,
-      concurrency,
-      prefix: `{${name}}`,
+      concurrency: 3,
+      // prefix: `{${name}}`,
     });
 
     worker.on("completed", (_job: any, _err: any) => {
