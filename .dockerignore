@@ -22,7 +22,6 @@ Thumbs.db
 # Env/Secrets
 .env
 .env.* 
-*.pem
 *.key
 
 # CI/CD
