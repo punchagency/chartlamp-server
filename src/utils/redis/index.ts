@@ -13,7 +13,7 @@ const redis = new Cluster(
   {
     slotsRefreshTimeout: 2000,
     // dnsLookup: This is needed when the addresses of startup nodes are hostnames instead of IPs.
-    // dnsLookup: (address, callback) => callback(null, address),
+    dnsLookup: (address, callback) => callback(null, address),
     redisOptions: {
       username: process.env.REDIS_USER,
       password: process.env.REDIS_PASSWORD,
