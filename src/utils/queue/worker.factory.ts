@@ -40,7 +40,7 @@ export function createWorker(
     const worker = new Worker(name, processor, {
       connection,
       concurrency: 3,
-      // prefix: `{${name}}`,
+      prefix: `{${name}}`,
     });
 
     worker.on("completed", (_job: any, _err: any) => {

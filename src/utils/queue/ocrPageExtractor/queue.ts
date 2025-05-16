@@ -5,7 +5,7 @@ import { ocrPageExtractorQueueName } from "../types";
 export const createOcrPageExtractorQueue = () => {
   const ocrPageExtractorQueue = new Queue(ocrPageExtractorQueueName, {
     connection: redis,
-    // prefix: `{${ocrPageExtractorQueueName}}`,
+    prefix: `{${ocrPageExtractorQueueName}}`,
   });
   return ocrPageExtractorQueue;
 };

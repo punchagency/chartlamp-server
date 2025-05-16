@@ -5,7 +5,7 @@ import { icdcodeClassificationQueueName } from "../types";
 export const createIcdcodeClassificationQueue = () => {
   const icdcodeClassificationQueue = new Queue(icdcodeClassificationQueueName, {
     connection: redis,
-    // prefix: `{${icdcodeClassificationQueueName}}`,
+    prefix: `{${icdcodeClassificationQueueName}}`,
   });
   return icdcodeClassificationQueue;
 };
