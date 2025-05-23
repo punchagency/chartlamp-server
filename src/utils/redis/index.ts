@@ -1,26 +1,38 @@
-import { Cluster } from "ioredis";
+import Redis, { Cluster } from "ioredis";
 // import { redisOptions } from "./config";
 
-const redis = new Cluster(
-  [
-    {
-      host: process.env.REDIS_HOST,
-      port: process.env.REDIS_PORT
-        ? parseInt(process.env.REDIS_PORT, 10)
-        : 6379,
-    },
-  ],
-  {
-    slotsRefreshTimeout: 2000,
-    // dnsLookup: This is needed when the addresses of startup nodes are hostnames instead of IPs.
-    dnsLookup: (address, callback) => callback(null, address),
-    redisOptions: {
-      username: process.env.REDIS_USER,
-      password: process.env.REDIS_PASSWORD,
-      tls: {},
-    },
+function getRedis() {
+  if (process.env.NODE_ENV === "local") {
+    const redis = new Redis({
+      maxRetriesPerRequest: null,
+    });
+    return redis;
+  } else {
+    const redis = new Cluster(
+      [
+        {
+          host: process.env.REDIS_HOST,
+          port: process.env.REDIS_PORT
+            ? parseInt(process.env.REDIS_PORT, 10)
+            : 6379,
+        },
+      ],
+      {
+        slotsRefreshTimeout: 2000,
+        // dnsLookup: This is needed when the addresses of startup nodes are hostnames instead of IPs.
+        dnsLookup: (address, callback) => callback(null, address),
+        redisOptions: {
+          username: process.env.REDIS_USER,
+          password: process.env.REDIS_PASSWORD,
+          tls: {},
+        },
+      }
+    );
+    return redis;
   }
-);
+}
+
+const redis = getRedis();
 
 redis.on("connect", () => console.log("✅ Connected to Redis"));
 redis.on("ready", () => console.log("🚀 Redis connection is ready"));
