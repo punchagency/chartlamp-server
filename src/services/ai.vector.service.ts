@@ -1,7 +1,9 @@
 import { Case } from "../models/case.model";
 import {
+  Document,
   DocumentModel,
   PageVectorStoreModel,
+  TempPageDocument,
   TempPageDocumentModel,
 } from "../models/document.model";
 import { fhirExtractorChain } from "../utils/extractor/fhirExtractor/extract";
@@ -73,6 +75,37 @@ class AIVectorService {
     return results;
   }
 
+  private async processPageFhir(page: TempPageDocument, document: any) {
+    if (!page.pageText) return;
+
+    const queryText = page.pageText;
+    const contextPages = await this.queryPagesWithContext(queryText);
+    const context = contextPages
+      .map((p) => `Page ${p.pageNumber}:\n${p.pageText}`)
+      .join("\n\n");
+
+    const bundle = await fhirExtractorChain.invoke({
+      context,
+      query:
+        "Extract patient, encounter, condition, diagnosticReport, and claims as FHIR resources.",
+    });
+
+    await TempPageDocumentModel.updateOne(
+      { _id: page._id },
+      { $set: { fhirSummary: bundle } }
+    );
+
+    await updatePercentageCompletion(
+      document.case._id?.toString() || "",
+      page.pageNumber,
+      page.totalPages,
+      `Page ${page.pageNumber} FHIR has been generated`
+    );
+
+    console.log(`Processed page ${page.pageNumber}`);
+    await safeLoopPause();
+  }
+
   async extractFhirFromDocument(documentId: string) {
     const pages = await TempPageDocumentModel.find(
       { document: documentId },
@@ -86,37 +119,7 @@ class AIVectorService {
     if (!document) throw new Error("Document not found");
 
     for (const page of pages) {
-      if (!page.pageText) continue;
-      const queryText = page.pageText;
-      const contextPages = await this.queryPagesWithContext(queryText);
-      const context = contextPages
-        .map((p) => `Page ${p.pageNumber}:\n${p.pageText}`)
-        .join("\n\n");
-
-      try {
-        const bundle = await fhirExtractorChain.invoke({
-          context,
-          query:
-            "Extract patient, encounter, condition, diagnosticReport, and claims as FHIR resources.",
-        });
-
-        // console.log("extractFhirFromDocument", bundle);
-
-        await TempPageDocumentModel.updateOne(
-          { _id: page._id },
-          { $set: { fhirSummary: bundle } }
-        );
-        await updatePercentageCompletion(
-          document.case._id?.toString() || "",
-          page.pageNumber,
-          page.totalPages,
-          `Page ${page.pageNumber} FHIR has been generated`
-        );
-        console.log(`Processed page ${page.pageNumber}`);
-        await safeLoopPause();
-      } catch (err: any) {
-        console.warn(`Skipping page ${page.pageNumber}: ${err.message}`);
-      }
+      await this.processPageFhir(page, document);
     }
   }
 

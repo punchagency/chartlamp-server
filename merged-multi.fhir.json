@@ -3,14 +3,355 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:258cd720-8d11-411d-9af8-819b526bea0c",
+      "fullUrl": "urn:uuid:fc9607c3-7827-4c129-b17e-ale20096886",
       "resource": {
         "resourceType": "Patient",
-        "id": "258cd720-8d11-411d-9af8-819b526bea0c",
-        "name": [],
+        "id": "fc9607c3-7827-4c129-b17e-ale20096886",
+        "name": [
+          {
+            "use": "official",
+            "family": "HENDERSON",
+            "given": [
+              "PARKER"
+            ]
+          }
+        ],
         "gender": "unknown",
         "birthDate": "",
         "address": []
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:23-035867",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "23-035867",
+        "name": [
+          {
+            "use": "official",
+            "family": "Henderson",
+            "given": [
+              "Parker"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "",
+        "address": []
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:23-035867",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "23-035867",
+        "name": [
+          {
+            "use": "official",
+            "family": "HENDERSON",
+            "given": [
+              "PARKER"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2003-01-24",
+        "address": [
+          {
+            "line": [
+              "1008 Traditions Meadow Dr"
+            ],
+            "city": "Wake Forest",
+            "state": "NC",
+            "postalCode": "27587",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "S40.0",
+              "display": "Contusion of shoulder and upper arm"
+            }
+          ],
+          "text": "Left arm pain"
+        },
+        "subject": {
+          "reference": "Patient/23-035867"
+        },
+        "onsetDateTime": "2023-04-12",
+        "recordedDate": "2023-04-12",
+        "recorder": {
+          "reference": "Practitioner/WHITFIELD_ALYSSA"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:2",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "2",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "S89.9",
+              "display": "Unspecified injury of lower leg"
+            }
+          ],
+          "text": "Right leg pain"
+        },
+        "subject": {
+          "reference": "Patient/23-035867"
+        },
+        "onsetDateTime": "2023-04-12",
+        "recordedDate": "2023-04-12",
+        "recorder": {
+          "reference": "Practitioner/WHITFIELD_ALYSSA"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "3",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "R10.11",
+              "display": "Right upper quadrant pain"
+            }
+          ],
+          "text": "Right upper quadrant abdominal pain"
+        },
+        "subject": {
+          "reference": "Patient/23-035867"
+        },
+        "onsetDateTime": "2023-04-12",
+        "recordedDate": "2023-04-12",
+        "recorder": {
+          "reference": "Practitioner/WHITFIELD_ALYSSA"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "unconfirmed",
+              "display": "Unconfirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "V43.52XA",
+              "display": "Traffic accident"
+            }
+          ],
+          "text": "Traffic accident"
+        },
+        "subject": {
+          "reference": "Patient/23-035867"
+        },
+        "onsetDateTime": "2023-04-12",
+        "recordedDate": "2023-04-12",
+        "recorder": {
+          "reference": "Practitioner/P514555"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-2",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-2",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "S09.90XA",
+              "display": "Injury of unspecified part of head, initial encounter"
+            }
+          ],
+          "text": "Injury"
+        },
+        "subject": {
+          "reference": "Patient/23-035867"
+        },
+        "onsetDateTime": "2023-04-12",
+        "recordedDate": "2023-04-12",
+        "recorder": {
+          "reference": "Practitioner/WHITFIELD_ALYSSA"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:23-035867",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "23-035867",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "subject": {
+          "reference": "Patient/23-035867"
+        },
+        "period": {
+          "start": "2023-04-12T08:41:21",
+          "end": "2023-04-12T10:14:51"
+        }
       }
     }
   ]

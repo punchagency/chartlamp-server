@@ -1404,36 +1404,70 @@ Important:
 
   async processReportFromFhir(fhir: BundelV2) {
     const prompt = `
-You are converting the following FHIR object into a normalized, structured medical report that conforms to a specific schema.
-
 FHIR Object:
 ${JSON.stringify(fhir)}
 
-Target Output Schema:
-- icdCodes: array of ICD-10 codes
-- nameOfDisease: array of disease names (diagnoses)
-- amountSpent: total cost from all claims (as a string, e.g. "200.00")
-- providerName: name of the medical provider (if available)
-- doctorName: name of the treating doctor (if available)
-- medicalNote: short summary of medical notes or findings
-- nameOfDiseaseByIcdCode: array of objects each with:
-  - icdCode: ICD-10 code (string)
-  - nameOfDisease: the matching disease name (string)
-- date: the date of the main encounter, admission, or medical event (as string)
+📘 Instructions:
 
-Instructions:
-- Extract all diagnoses from the FHIR Condition resources.
-- For each diagnosis:
-  - If "code.coding[0].code" is present, use it as the "icdCode".
-  - If the ICD-10 code is missing or empty, assign the most appropriate one using your medical knowledge.
-- The "nameOfDiseaseByIcdCode" array should contain one entry per diagnosis, each with a name and ICD-10 code.
-- Ensure that:
-  - The "icdCodes" array contains all ICD-10 codes from "nameOfDiseaseByIcdCode"
-  - The "nameOfDisease" array contains all disease names from "nameOfDiseaseByIcdCode"
-  - The lengths of "icdCodes", "nameOfDisease", and "nameOfDiseaseByIcdCode" are all equal
-- Only include codes and diagnoses that appear in the FHIR object, or are clearly inferred from it.
-- Format your response as a valid JSON object that follows the structure described above.
+You are given a FHIR-compliant bundle containing medical data. Extract structured information according to the provide structured output.
 
+Conditions & Diagnoses:
+
+Extract all diagnoses from Condition resources.
+
+For each diagnosis:
+
+Use resource.code.coding[0].code as the icdCode (ICD-10).
+
+Use resource.code.text as the nameOfDisease.
+
+If code or display is missing or empty, use clinical reasoning to infer the most appropriate ICD-10 code and condition name.
+
+Construct nameOfDiseaseByIcdCode:
+
+Create one entry per diagnosis.
+
+Each entry must contain both icdCode and nameOfDisease.
+
+Arrays Consistency Rules:
+
+icdCodes = all ICD-10 codes from nameOfDiseaseByIcdCode.
+
+nameOfDisease = all condition names from nameOfDiseaseByIcdCode.
+
+All three arrays (icdCodes, nameOfDisease, nameOfDiseaseByIcdCode) must be of equal length and aligned index-wise.
+
+Claims & Cost:
+
+Sum all monetary amounts found in Claim.item.adjudication.amount.value fields (or equivalent).
+
+Return total as a string in decimal format (e.g., "237.00").
+
+Provider & Doctor Info:
+
+Extract providerName from the encounter or claim if available.
+
+Extract doctorName from Encounter.participant.individual.display, Practitioner, or equivalent.
+
+Medical Notes:
+
+Provide a brief textual summary from ClinicalImpression, Observation, Condition.note, or other relevant note fields.
+
+Main Date:
+
+Use the date of the primary encounter, admission, or medical event.
+
+Prefer Encounter.period.start or similar fields.
+
+Return as string (e.g., "2024-03-15").
+
+⚠️ Important:
+
+Only include data explicitly present or clearly inferred from the FHIR resources.
+
+Do not fabricate information.
+
+Return your final result as a valid JSON object strictly matching the schema.
 
 `.trim();
 
