@@ -1,15 +1,12 @@
 import { Case } from "../models/case.model";
 import {
-  Document,
   DocumentModel,
   PageVectorStoreModel,
   TempPageDocument,
   TempPageDocumentModel,
 } from "../models/document.model";
 import { fhirExtractorChain } from "../utils/extractor/fhirExtractor/extract";
-import { BundelV2 } from "../utils/extractor/fhirExtractor/structuredOutputs";
 import { safeLoopPause, updatePercentageCompletion } from "../utils/helpers";
-import { AIService } from "./ai.service";
 import OpenAIService from "./openai.service";
 import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
@@ -75,7 +72,7 @@ class AIVectorService {
     return results;
   }
 
-  private async processPageFhir(page: TempPageDocument, document: any) {
+  private async processPageFhir(page: any, document: any) {
     if (!page.pageText) return;
 
     const queryText = page.pageText;
